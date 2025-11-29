@@ -1,13 +1,26 @@
-# HR Platform (Решенное задание)
+# HRPlatformAPI
+[![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue)](https://www.python.org/downloads/)
+[![Django 5](https://img.shields.io/badge/django-5.0%2B-brightgreen)](https://www.djangoproject.com/)
 
-## Задание
+Django REST API for HR platform: custom users, resume management and role-based permissions.
 
-Вы разрабатываете HR-платформу для управления резюме. Вам дан готовый набор моделей, сериализаторов и представлений. Ваша задача — реализовать авторизацию, роли и разграничение доступа к операциям над резюме. На платформе предусмотрены следующие роли:
+## Features
+- Custom user model + token authentication
+- Resume CRUD with file uploads support
+- Separate apps: users, resumes
+- Permission classes and serializers per app
+- Ready for JWT / OAuth2 migration
 
-- `Кандидат`: может создавать, редактировать и просматривать только свои резюме;
-- `HR-менеджер`: может просматривать резюме всех кандидатов, но не редактировать их.;
-- `Администратор`: имеет полный доступ ко всем действиям (CRUD).
+## Stack
+- Django 5 · DRF
+- TokenAuthentication (easy switch to JWT)
+- SQLite → PostgreSQL ready
 
-Настройте права доступа к API: кто может видеть, создавать, обновлять и удалять резюме — в зависимости от роли.
-
-Проверьте работу через `/api/resumes/` после настройки модели пользователя и авторизации.
+## Run
+```bash
+python -m venv venv && source venv/bin/activate
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py createsuperuser
+python manage.py runserver
+```
